@@ -61,7 +61,7 @@
         android:layout_below="@id/first_row"
         android:id="@+id/second_row">
 
-        <android.support.v4.widget.Space
+        <androidx.legacy.widget.Space
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content" />
@@ -97,7 +97,7 @@
             android:text="O: "
             android:background="@drawable/button_grey"
             tools:ignore="HardcodedText" />
-        <android.support.v4.widget.Space
+        <androidx.legacy.widget.Space
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content" />
@@ -161,7 +161,7 @@
         android:layout_below="@id/third_row"
         android:id="@+id/fourth_row">
 
-        <android.support.v4.widget.Space
+        <androidx.legacy.widget.Space
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content" />
@@ -197,7 +197,7 @@
             android:text="P: "
             android:background="@drawable/button_grey"
             tools:ignore="HardcodedText" />
-        <android.support.v4.widget.Space
+        <androidx.legacy.widget.Space
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content" />
@@ -261,7 +261,7 @@
         android:layout_below="@id/fifth_row"
         android:id="@+id/sixth_row">
 
-        <android.support.v4.widget.Space
+        <androidx.legacy.widget.Space
             android:layout_width="0dp"
             android:layout_weight="2"
             android:layout_height="wrap_content" />
@@ -289,7 +289,7 @@
             android:text="L: "
             android:background="@drawable/button_grey"
             tools:ignore="HardcodedText" />
-        <android.support.v4.widget.Space
+        <androidx.legacy.widget.Space
             android:layout_width="0dp"
             android:layout_weight="2"
             android:layout_height="wrap_content" />

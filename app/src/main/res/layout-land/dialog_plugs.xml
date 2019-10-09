@@ -94,7 +94,7 @@
         android:layout_below="@id/first_row"
         android:id="@+id/second_row">
 
-        <android.support.v4.widget.Space
+        <androidx.legacy.widget.Space
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content" />
@@ -162,7 +162,7 @@
             android:text="K: "
             android:background="@drawable/button_grey"
             tools:ignore="HardcodedText" />
-        <android.support.v4.widget.Space
+        <androidx.legacy.widget.Space
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content" />
