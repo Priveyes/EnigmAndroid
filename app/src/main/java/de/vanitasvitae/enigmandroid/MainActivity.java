@@ -241,7 +241,7 @@ public class MainActivity extends AppCompatActivity
 		try{ pInfo = getPackageManager().getPackageInfo(this.getPackageName(), 0);}
 		catch (PackageManager.NameNotFoundException e){ e.printStackTrace();}
 		assert pInfo != null;
-		String version = pInfo.versionName+ " ("+pInfo.versionCode+")";
+		String version = pInfo.versionName+ " ("+pInfo.getLongVersionCode()+")";
 		TextView versionText = (TextView) aboutView.findViewById(R.id.about_version_section);
 		versionText.setText(version);
 

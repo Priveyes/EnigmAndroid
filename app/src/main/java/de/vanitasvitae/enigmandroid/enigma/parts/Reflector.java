@@ -111,7 +111,7 @@ public class Reflector
 		String s = "";
 
 		int x;
-		while((x = Enigma.getValue(b, 27)) != 26 || b.compareTo(BigInteger.ZERO) > 1)
+		while((x = Enigma.getValue(b, 27)) != 26 || b.compareTo(BigInteger.ZERO) > 0)
 		{
 			s = ((char) (x+65))+s;
 			b = Enigma.removeDigit(b, 27);
