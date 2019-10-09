@@ -16,16 +16,6 @@
 
 package com.google.zxing.integration.android;
 
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Fragment;
 import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -34,6 +24,18 @@ import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * <p>A utility class which helps ease integration with Barcode Scanner via {@link Intent}s. This is a simple
@@ -48,8 +50,8 @@ import android.util.Log;
  * <p>It does require that the Barcode Scanner (or work-alike) application is installed. The
  * {@link #initiateScan()} method will prompt the user to download the application, if needed.</p>
  *
- * <p>There are a few steps to using this integration. First, your {@link Activity} must implement
- * the method {@link Activity#onActivityResult(int, int, Intent)} and include a line of code like this:</p>
+ * <p>There are a few steps to using this integration. First, your {@link AppCompatActivity} must implement
+ * the method {@link AppCompatActivity#onActivityResult(int, int, Intent)} and include a line of code like this:</p>
  *
  * <pre>{@code
  * public void onActivityResult(int requestCode, int resultCode, Intent intent) {
@@ -71,9 +73,9 @@ import android.util.Log;
  * integrator.initiateScan();
  * }</pre>
  *
- * <p>Note that {@link #initiateScan()} returns an {@link AlertDialog} which is non-null if the
+ * <p>Note that {@link #initiateScan()} returns an {@link androidx.appcompat.app.AlertDialog} which is non-null if the
  * user was prompted to download the application. This lets the calling app potentially manage the dialog.
- * In particular, ideally, the app dismisses the dialog if it's still active in its {@link Activity#onPause()}
+ * In particular, ideally, the app dismisses the dialog if it's still active in its {@link AppCompatActivity#onPause()}
  * method.</p>
  * 
  * <p>You can use {@link #setTitle(String)} to customize the title of this download prompt dialog (or, use
@@ -139,7 +141,7 @@ public class IntentIntegrator {
           // What else supports this intent?
       );
   
-  private final Activity activity;
+  private final FragmentActivity activity;
   private final Fragment fragment;
 
   private String title;
@@ -150,9 +152,9 @@ public class IntentIntegrator {
   private final Map<String,Object> moreExtras = new HashMap<>(3);
 
   /**
-   * @param activity {@link Activity} invoking the integration
+   * @param activity {@link AppCompatActivity} invoking the integration
    */
-  public IntentIntegrator(Activity activity) {
+  public IntentIntegrator(AppCompatActivity activity) {
     this.activity = activity;
     this.fragment = null;
     initializeConfiguration();
@@ -161,7 +163,7 @@ public class IntentIntegrator {
   /**
    * @param fragment {@link Fragment} invoking the integration.
    *  {@link #startActivityForResult(Intent, int)} will be called on the {@link Fragment} instead
-   *  of an {@link Activity}
+   *  of an {@link AppCompatActivity}
    */
   public IntentIntegrator(Fragment fragment) {
     this.activity = fragment.getActivity();
@@ -251,10 +253,10 @@ public class IntentIntegrator {
   /**
    * Initiates a scan for all known barcode types with the default camera.
    *
-   * @return the {@link AlertDialog} that was shown to the user prompting them to download the app
+   * @return the {@link androidx.appcompat.app.AlertDialog} that was shown to the user prompting them to download the app
    *   if a prompt was needed, or null otherwise.
    */
-  public final AlertDialog initiateScan() {
+  public final androidx.appcompat.app.AlertDialog initiateScan() {
     return initiateScan(ALL_CODE_TYPES, -1);
   }
   
@@ -262,10 +264,10 @@ public class IntentIntegrator {
    * Initiates a scan for all known barcode types with the specified camera.
    *
    * @param cameraId camera ID of the camera to use. A negative value means "no preference".
-   * @return the {@link AlertDialog} that was shown to the user prompting them to download the app
+   * @return the {@link androidx.appcompat.app.AlertDialog} that was shown to the user prompting them to download the app
    *   if a prompt was needed, or null otherwise.
    */
-  public final AlertDialog initiateScan(int cameraId) {
+  public final androidx.appcompat.app.AlertDialog initiateScan(int cameraId) {
     return initiateScan(ALL_CODE_TYPES, cameraId);
   }
 
@@ -275,10 +277,10 @@ public class IntentIntegrator {
    * like {@link #PRODUCT_CODE_TYPES} for example.
    *
    * @param desiredBarcodeFormats names of {@code BarcodeFormat}s to scan for
-   * @return the {@link AlertDialog} that was shown to the user prompting them to download the app
+   * @return the {@link androidx.appcompat.app.AlertDialog} that was shown to the user prompting them to download the app
    *   if a prompt was needed, or null otherwise.
    */
-  public final AlertDialog initiateScan(Collection<String> desiredBarcodeFormats) {
+  public final androidx.appcompat.app.AlertDialog initiateScan(Collection<String> desiredBarcodeFormats) {
     return initiateScan(desiredBarcodeFormats, -1);
   }
   
@@ -289,7 +291,7 @@ public class IntentIntegrator {
    *
    * @param desiredBarcodeFormats names of {@code BarcodeFormat}s to scan for
    * @param cameraId camera ID of the camera to use. A negative value means "no preference".
-   * @return the {@link AlertDialog} that was shown to the user prompting them to download the app
+   * @return the {@link androidx.appcompat.app.AlertDialog} that was shown to the user prompting them to download the app
    *   if a prompt was needed, or null otherwise
    */
   public final AlertDialog initiateScan(Collection<String> desiredBarcodeFormats, int cameraId) {
@@ -332,8 +334,8 @@ public class IntentIntegrator {
    *
    * @param intent Intent to start.
    * @param code Request code for the activity
-   * @see android.app.Activity#startActivityForResult(Intent, int)
-   * @see android.app.Fragment#startActivityForResult(Intent, int)
+   * @see AppCompatActivity#startActivityForResult(Intent, int)
+   * @see Fragment#startActivityForResult(Intent, int)
    */
   protected void startActivityForResult(Intent intent, int code) {
     if (fragment == null) {
@@ -366,8 +368,8 @@ public class IntentIntegrator {
     return false;
   }
 
-  private AlertDialog showDownloadDialog() {
-    AlertDialog.Builder downloadDialog = new AlertDialog.Builder(activity);
+  private androidx.appcompat.app.AlertDialog showDownloadDialog() {
+    androidx.appcompat.app.AlertDialog.Builder downloadDialog = new androidx.appcompat.app.AlertDialog.Builder(activity);
     downloadDialog.setTitle(title);
     downloadDialog.setMessage(message);
     downloadDialog.setPositiveButton(buttonYes, new DialogInterface.OnClickListener() {
@@ -402,8 +404,8 @@ public class IntentIntegrator {
 
 
   /**
-   * <p>Call this from your {@link Activity}'s
-   * {@link Activity#onActivityResult(int, int, Intent)} method.</p>
+   * <p>Call this from your {@link AppCompatActivity}'s
+   * {@link AppCompatActivity#onActivityResult(int, int, Intent)} method.</p>
    *
    * @param requestCode request code from {@code onActivityResult()}
    * @param resultCode result code from {@code onActivityResult()}
@@ -414,7 +416,7 @@ public class IntentIntegrator {
    */
   public static IntentResult parseActivityResult(int requestCode, int resultCode, Intent intent) {
     if (requestCode == REQUEST_CODE) {
-      if (resultCode == Activity.RESULT_OK) {
+      if (resultCode == AppCompatActivity.RESULT_OK) {
         String contents = intent.getStringExtra("SCAN_RESULT");
         String formatName = intent.getStringExtra("SCAN_RESULT_FORMAT");
         byte[] rawBytes = intent.getByteArrayExtra("SCAN_RESULT_BYTES");
@@ -437,11 +439,11 @@ public class IntentIntegrator {
    * Defaults to name "TEXT_TYPE".
    *
    * @param text the text string to encode as a barcode
-   * @return the {@link AlertDialog} that was shown to the user prompting them to download the app
+   * @return the {@link androidx.appcompat.app.AlertDialog} that was shown to the user prompting them to download the app
    *   if a prompt was needed, or null otherwise
    * @see #shareText(CharSequence, CharSequence)
    */
-  public final AlertDialog shareText(CharSequence text) {
+  public final androidx.appcompat.app.AlertDialog shareText(CharSequence text) {
     return shareText(text, "TEXT_TYPE");
   }
 
@@ -451,10 +453,10 @@ public class IntentIntegrator {
    *
    * @param text the text string to encode as a barcode
    * @param type name of data to encode. See {@code com.google.zxing.client.android.Contents.Type} constants.
-   * @return the {@link AlertDialog} that was shown to the user prompting them to download the app
+   * @return the {@link androidx.appcompat.app.AlertDialog} that was shown to the user prompting them to download the app
    *   if a prompt was needed, or null otherwise
    */
-  public final AlertDialog shareText(CharSequence text, CharSequence type) {
+  public final androidx.appcompat.app.AlertDialog shareText(CharSequence text, CharSequence type) {
     Intent intent = new Intent();
     intent.addCategory(Intent.CATEGORY_DEFAULT);
     intent.setAction(BS_PACKAGE + ".ENCODE");

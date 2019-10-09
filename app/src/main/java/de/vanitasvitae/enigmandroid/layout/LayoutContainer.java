@@ -14,9 +14,13 @@
  */
 package de.vanitasvitae.enigmandroid.layout;
 
+import android.annotation.SuppressLint;
+import android.os.Build;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+
+import androidx.annotation.RequiresApi;
 
 import de.vanitasvitae.enigmandroid.MainActivity;
 import de.vanitasvitae.enigmandroid.R;
@@ -99,8 +103,6 @@ public abstract class LayoutContainer
 	private static LayoutContainer createLayoutContainer(String enigmaType)
 	{
 		switch (enigmaType) {
-			case "I":
-				return new LayoutContainer_I();
 			case "M3":
 				return new LayoutContainer_M3();
 			case "M4":
@@ -125,6 +127,7 @@ public abstract class LayoutContainer
 				return new LayoutContainer_G260();
 			case "KD":
 				return new LayoutContainer_KD();
+			case "I":
 			default:
 				return new LayoutContainer_I();
 		}
@@ -135,10 +138,11 @@ public abstract class LayoutContainer
 	 * @param view Spinner
 	 * @param resourceID ID of the referenced array (eg. R.array.rotor_1_8)
 	 */
+	@SuppressLint("NewApi")
 	void prepareSpinnerAdapter(Spinner view, int resourceID) {
 		MainActivity main = (MainActivity) MainActivity.ActivitySingleton.getInstance().getActivity();
 
-		ArrayAdapter<CharSequence> ad = new ArrayAdapter<CharSequence>(main,
+		ArrayAdapter<CharSequence> ad = new ArrayAdapter<>(main,
 				android.R.layout.simple_spinner_item,
 				main.getResources().getTextArray(resourceID));
 
@@ -152,6 +156,7 @@ public abstract class LayoutContainer
 	 * @param view Spinner
 	 * @param array Character array
 	 */
+	@SuppressLint("NewApi")
 	void prepareSpinnerAdapter(Spinner view, Character[] array)
 	{
 		MainActivity main = (MainActivity) MainActivity.ActivitySingleton.getInstance().getActivity();

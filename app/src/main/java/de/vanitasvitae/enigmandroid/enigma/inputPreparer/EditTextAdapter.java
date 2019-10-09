@@ -71,8 +71,8 @@ public abstract class EditTextAdapter
             case "4": return new EditTextAdapterGap(editText, 4);
             case "5": return new EditTextAdapterGap(editText, 5);
             case "6": return new EditTextAdapterGap(editText, 6);
-            case "no": return new EditTextAdapterNoGap(editText);
-            default: return new EditTextAdapterNoGap(editText);
+			case "no":
+			default: return new EditTextAdapterNoGap(editText);
         }
     }
 

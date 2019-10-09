@@ -14,7 +14,6 @@
  */
 package de.vanitasvitae.enigmandroid.layout;
 
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.text.Editable;
@@ -23,6 +22,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AlertDialog;
 
 import de.vanitasvitae.enigmandroid.MainActivity;
 import de.vanitasvitae.enigmandroid.R;
@@ -72,7 +73,7 @@ public class PassphraseDialogBuilder
     public void showDialog()
     {
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(main);
+        AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(main);
         builder.setTitle(R.string.hint_configuration);
         Dialog d = builder.setView(passphraseDialogView)
                 .setCancelable(true)
@@ -103,7 +104,7 @@ public class PassphraseDialogBuilder
                     }
                 }).create();
         d.show();
-        positive = ((AlertDialog)d).getButton(AlertDialog.BUTTON_POSITIVE);
+        positive = ((AlertDialog)d).getButton(androidx.appcompat.app.AlertDialog.BUTTON_POSITIVE);
         positive.setEnabled(false);
     }
 }

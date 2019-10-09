@@ -226,7 +226,7 @@ public abstract class Enigma
 			case 9: return "KSA";
 			case 10: return "R";
 			case 11: return "T";
-			case 12: return "KD";
+			case 12:
 			default: return "KD";
 		}
 	}
@@ -259,7 +259,7 @@ public abstract class Enigma
 	public static int getValue(BigInteger s, int d)
 	{
 		BigInteger o = s.mod(BigInteger.valueOf(d)).add(BigInteger.valueOf(d)).mod(BigInteger.valueOf(d));
-		return Integer.valueOf(o.toString());
+		return Integer.parseInt(o.toString());
 	}
 
 	/**

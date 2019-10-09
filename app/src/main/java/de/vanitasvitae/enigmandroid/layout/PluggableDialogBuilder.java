@@ -14,7 +14,6 @@
  */
 package de.vanitasvitae.enigmandroid.layout;
 
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.res.Resources;
@@ -22,6 +21,8 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AlertDialog;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -69,7 +70,7 @@ class PluggableDialogBuilder
     {
         allowIncompleteConnections = true;
         restoreConfigurationPlugboard();
-        AlertDialog.Builder adb = new AlertDialog.Builder(main);
+        AlertDialog.Builder adb = new androidx.appcompat.app.AlertDialog.Builder(main);
         adb.setTitle(R.string.title_plugboard_dialog);
         Dialog d = adb.setView(dialogView)
                 .setCancelable(true)
@@ -108,7 +109,7 @@ class PluggableDialogBuilder
     {
         allowIncompleteConnections = false;
         restoreConfigurationReflector();
-        AlertDialog.Builder adb = new AlertDialog.Builder(main);
+        androidx.appcompat.app.AlertDialog.Builder adb = new androidx.appcompat.app.AlertDialog.Builder(main);
         adb.setTitle(R.string.title_reflector_dialog);
         Dialog d = adb.setView(dialogView)
                 .setCancelable(true)
@@ -136,7 +137,7 @@ class PluggableDialogBuilder
         lp.width = WindowManager.LayoutParams.MATCH_PARENT;
         lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
         d.show();
-        positive = ((AlertDialog)d).getButton(AlertDialog.BUTTON_POSITIVE);
+        positive = ((AlertDialog)d).getButton(androidx.appcompat.app.AlertDialog.BUTTON_POSITIVE);
         if(!allConnectionsDone())
         {
             positive.setEnabled(false);

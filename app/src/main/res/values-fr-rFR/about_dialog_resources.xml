@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="button_show_changelog">Changelog</string>
+
+    <string name="title_action_about">À propos</string>
+    <string name="title_about_dialog">À propos d\'EnigmAndroid</string>
+    <string name="description_text">EnigmAndroid l\'implémentation d\'une simulation de la machine Enigma.
+    La machine Enigma est une machine à chiffrer développée dans les années 20. La Wehrmacht allemande l\'a utilisé pour
+    secret chiffré transmis pendant la seconde guerre mondiale. Il y avait plusieurs modèles Enigma différents. Pour chiffrer du texte, chaque lettre est passée à travers 3-4 rotors mécaniques qui tournent à chaque frappe.
+    De cette façon, l\'énigme réalise une substitution polyalphabétique et la sortie apparaît de manière aléatoire. Les rotors peuvent être choisis parmi un ensemble de 5. De plus, il y avait un
+    ce qu\'on appelle le plugboard, où l\'on peut basculer entre des paires de lettres.
+    </string>
+
+    <string name="title_section_how_to_use">Utilisation</string>
+    <string name="section_how_to_use">Au début, choisissez un modèle de la machine avec laquelle travailler.
+        Vous pouvez le faire dans les paramètres. Pour chiffrer / déchiffrer un message, vous pouvez le nommer dans le champ de saisie.
+        Ensuite, vous pouvez -en fonction du modèle choisi- sélectionner un réflecteur et certains rotors. Sélectionnez également leurs positions initiales.
+        Vous pouvez ensuite définir des paires sur le tableau de connexion ou sur le réflecteur enfichable.
+        Par conséquent, appuyez sur le bouton correspondant et connectez les caractères que vous souhaitez connecter en cliquant dessus les uns après les autres.
+        Si vous souhaitez déconnecter deux fiches, il suffit de toucher l\'une des fiches deux fois.
+        Vous pouvez également définir des paramètres de sonnerie personnalisés. Ouvrez le menu des options et sélectionnez \"Paramètres de sonnerie \".
+        Lorsque vous êtes prêt, appuyez sur \"En-/Decrypt! \". Pour partager la configuration de la machine enigma via QR-Code, ouvrez simplement les options
+        menu et sélectionnez l\'entrée \"Partager la configuration via QR-Code \". Pour numériser un QR-Code, choisissez l\'entrée correspondante.
+        Vous pouvez également entrer un mot de code ou le contenu d\'un QR-Code en cliquant sur l\'entrée \"Créer une configuration à partir de la phrase secrète\" pour restaurer une configuration de cette façon. </string>
+    <string name="title_section_developer">Développeur</string>
+    <string name="section_developer">EnigmAndroid est développé par: \nPaul Schaub</string>
+
+    <string name="title_section_disclaimer">Disclaimer</string>
+    <string name="section_disclaimer">THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+\"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</string>
+</resources>

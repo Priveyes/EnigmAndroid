@@ -14,8 +14,6 @@
  */
 package de.vanitasvitae.enigmandroid;
 
-import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.ClipData;
 import android.content.DialogInterface;
@@ -37,6 +35,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
@@ -49,7 +50,7 @@ import de.vanitasvitae.enigmandroid.enigma.inputPreparer.InputPreparer;
 import de.vanitasvitae.enigmandroid.layout.LayoutContainer;
 import de.vanitasvitae.enigmandroid.layout.PassphraseDialogBuilder;
 
-public class MainActivity extends Activity
+public class MainActivity extends AppCompatActivity
 {
 	private static final int RESULT_SETTINGS = 1;
 	private static final String URI_CHANGELOG =
@@ -245,7 +246,7 @@ public class MainActivity extends Activity
 		versionText.setText(version);
 
 		//Build and show dialog
-		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		androidx.appcompat.app.AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		builder.setTitle(R.string.title_about_dialog);
 		builder.setView(aboutView)
 				.setCancelable(true)
@@ -283,21 +284,17 @@ public class MainActivity extends Activity
 			@Override
 			public void onClick(View v)
 			{
-				if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.HONEYCOMB){
+				{
 					android.content.ClipboardManager clipboard =  (android.content.ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
 					ClipData clip;
 					clip = ClipData.newPlainText("label", configuration);
 					clipboard.setPrimaryClip(clip);
-				} else{
-					@SuppressWarnings("deprecation")
-					android.text.ClipboardManager clipboard = (android.text.ClipboardManager)getSystemService(CLIPBOARD_SERVICE);
-					clipboard.setText(configuration);
 				}
 				Toast.makeText(getApplicationContext(), R.string.message_clipboard, Toast.LENGTH_SHORT).show();
 			}
 		});
 		l.addView(e);
-		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(this);
 		builder.setTitle(R.string.dialog_title_share_configuration)
 				.setView(shareView).setCancelable(true);
 		final Dialog d = builder.create();
@@ -333,7 +330,7 @@ public class MainActivity extends Activity
 	private void showReceiveConfigurationDialog()
 	{
 		final View shareView = View.inflate(this, R.layout.dialog_two_options, null);
-		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		androidx.appcompat.app.AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		builder.setTitle(R.string.dialog_title_restore_configuration)
 				.setView(shareView).setCancelable(true);
 		final Dialog d = builder.create();
@@ -476,7 +473,7 @@ public class MainActivity extends Activity
 	public static class ActivitySingleton
 	{
 		private static ActivitySingleton instance = null;
-		private Activity activity;
+		private AppCompatActivity activity;
 
 		//private constructor
 		private ActivitySingleton(){}
@@ -491,7 +488,7 @@ public class MainActivity extends Activity
 		 * Set an Activity that the Singleton returns
 		 * @param activity activity that's stored
 		 */
-		public void setActivity(Activity activity)
+		public void setActivity(AppCompatActivity activity)
 		{
 			this.activity = activity;
 		}
@@ -500,7 +497,7 @@ public class MainActivity extends Activity
 		 * Returns the stored Activity
 		 * @return stored Activity
 		 */
-		public Activity getActivity()
+		public AppCompatActivity getActivity()
 		{
 			return activity;
 		}
